@@ -1,0 +1,14 @@
+<p>
+	<b>Name:</b>
+	<%=@c1.name%>
+</p>
+<p>
+	<b>Description:</b>
+	<%=@c1.description%>
+</p>
+<p>
+	<b>Image:</b>
+	<%=image_tag(@c1.image.url(:small))%>
+</p>
+<%=link_to 'Edit',categories_edit_path(:edit_cid=>@c1.id) %>
+<%=link_to 'Back' ,categories_path%>

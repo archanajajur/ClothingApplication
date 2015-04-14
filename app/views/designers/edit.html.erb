@@ -1,0 +1,19 @@
+<h1>Editing Designer</h1>
+
+<%= form_for(@designer,url: designers_update_path(:update_did=>"#{@designer.id}"), html: { method: :put }) do |f| %>
+	<div><%= f.label :Name%><br />
+  		<%= f.text_field :name%></div>
+	<div><%= f.label :Description%><br />
+  		<%= f.text_area :description%></div>
+	<div><%= f.label :Image %><br>
+		<%=f.file_field :image %></div> 
+	<div><%= f.label :City %><br>
+		<%=f.text_field :city %></div>
+	<div><%= f.label :State %><br>
+		<%=f.text_field :state %></div>
+	<div><%= f.label :Country %><br>
+		<%=f.text_field :country %></div>
+	<div><%= f.submit "Update"  %></div>
+  	<% end %>
+<%=link_to 'Show',designers_show_path(:show_did=>@designer.id)%>
+<%=link_to 'Back',designers_path%>

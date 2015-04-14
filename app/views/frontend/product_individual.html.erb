@@ -1,0 +1,60 @@
+<body>
+	<div id="main">
+		<div id ="side_bar">
+	<%=render :partial=>"layouts/designer"%>
+
+	</div>
+
+	<div id="content">
+<h1>Individual Product Details</h1>
+<table>
+	<tr>
+		<td>Name:</td>
+		<td><%= @ind_pid.name %></td>
+	</tr>
+	<tr>
+		<td>Description:</td>
+		<td><%= @ind_pid.description %></td>
+	</tr>
+	<tr>
+		<td>Image:</td>
+		<td><%= image_tag(@ind_pid.image.url(:small)) %></td>
+	</tr>
+	<tr>
+		<td>SKU:</td>
+		<td><%= @ind_pid.sku %></td>
+	</tr>
+	<tr>
+		<td>Designer:</td>
+		<td><%= @ind_pid.designer.name %></td>
+	</tr>
+	<tr>
+		<td>Category:</td>
+		
+	
+	<% @id.each do |c| %>
+<%p=Category.where(:id=>c.category_id).first%>
+
+ <td><%= p.name %></td>
+    <% end %>
+
+</tr>  
+</table><br><br>    
+<div><%= form_tag (data_saved_path) do %>
+<div><%= label_tag 'Size' %><br>
+<%= select_tag "sizes", options_for_select(@size),:id=>"sizes"%></div>
+<%= hidden_field_tag "product_id", @ind_pid.id %>
+<div><%= label_tag 'Price' %><br>
+<%= text_field_tag 'price'," ",:readonly=>true,:id=>"price" %></div>
+<div><%= label_tag 'Quantity' %><br>
+<%= text_field_tag 'quantity' ," ",:id=>"qty" %></div>
+<div><%= label_tag 'Net_Total' %><br>
+<%= text_field_tag 'total_amt' ," ",:id=>"total" ,:readonly=>true%></div>
+<div><%= submit_tag "Save" %></div>
+<% end %></div>
+</div>
+</div>
+</body>
+
+
+

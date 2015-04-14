@@ -1,0 +1,36 @@
+<body>
+	<%= render :partial=>"layouts/header"%>
+	<div id="main">
+		<div id ="side_bar">
+	<%=render :partial=>"layouts/designer"%>
+
+	</div>
+
+	<div id="content">
+<h1>Designer details</h1>
+<table>
+	<tr><% @desi.each do |p|%>
+		<td>
+			<%= link_to image_tag(p.image.url(:small)),frontend_designer_individual_path(:idesid=>p.id)%>
+		</td>
+		<% end %>
+	</tr>
+	<tr><td><h1>Featured Products</h1></td></tr>
+	<tr>
+<% @products.each do |c| %>
+
+ <td><%= link_to image_tag(c.image.url(:small)), frontend_product_individual_path(:ipid=>c.id) %></td>
+    
+   <% end %>                                
+  </tr>
+</table>
+</div>
+</div>
+<div>
+<%= link_to "Back" ,frontend_home_path%>
+</div>
+<div id="aside">
+		<%=link_to "My Account",profile_path%>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		<%=link_to "Sign Out",destroy_user_session_path,:method => :delete%>
+	</div>
+</body>

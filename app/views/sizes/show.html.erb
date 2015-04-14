@@ -1,0 +1,19 @@
+<p>
+	<b>Quantity:</b>
+	<%=@size.quantity%>
+</p>
+<p>
+	<b>Price:</b>
+	<%=@size.price%>
+</p>
+
+<p>
+	<b>Sizes:</b>
+	<%=@size.sizes%>
+</p>
+<p>
+	<b>Product_id:</b>
+	<%=@size.product_id%>
+</p>
+<%=link_to 'Edit',edit_size_path(@size) %>
+<%=link_to 'Back' ,sizes_path%>

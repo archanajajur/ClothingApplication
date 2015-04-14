@@ -1,0 +1,13 @@
+<table><% @usr.each do |e|%>
+	<tr><td><%= e.name%></td>
+		<td><% e.product_saveds.each do |s|%>
+		<%= image_tag(s.product.image.url(:small))%>	<%end%></td>
+
+		<td><% e.designer_likeds.each do |s|%>
+		<%=image_tag(s.designer.image.url(:small))%>	<%end%></td>
+
+	</tr>
+
+	<%end%>
+
+</table>

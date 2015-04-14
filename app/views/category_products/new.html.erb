@@ -1,0 +1,10 @@
+<h1> New Category Product</h1>
+<%= form_for :categoryproduct,:url=>{:controller=>"category_products",:action=>"create"} do |f| %>
+
+	<div><%= f.label :Category_id %><br>
+		<%=f.select :category_id,options_for_select(@category_ids) %></div> 
+	<div><%= f.label :Product_id%><br />
+ 		<%=f.select :product_id,options_for_select(@product_ids)%></div>
+	<div><%= f.submit "Submit" %></div>
+		
+	<%end%>

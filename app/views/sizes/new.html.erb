@@ -1,0 +1,13 @@
+<h1> New Product_Sizes</h1>
+<%= form_for :size,:url=>{:controller=>"sizes",:action=>"create"} do |f| %>
+	<div><%= f.label :Quantity %><br>
+		<%= f.text_field :quantity %></div>
+	<div><%= f.label :Price %><br>
+		<%=f.text_field :price %></div>
+	<div><%= f.label :Sizes %><br>
+		<%=f.select :sizes,options_for_select(["XL","L","M","S"]) %></div> 
+	<div><%= f.label :Product_id%><br />
+ 		<%=f.select :product_id, options_for_select(@product_ids)%></div>
+	<div><%= f.submit "Submit" %></div>
+		
+	<%end%>

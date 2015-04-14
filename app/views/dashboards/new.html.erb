@@ -1,0 +1,69 @@
+<table >
+	<tr>
+		<td><%=link_to "My Account",profile_path%></td>
+		<td><%=link_to "Sign Out",destroy_user_session_path,:method => :delete%></td>
+	</tr>
+	<br>
+	<tr>
+		<td><h3>Designers you have liked</h3></td>
+	</tr>
+	<br>
+	<br>
+	<tr>
+		<% @designerliked.each do |d|%>
+		<td><%= image_tag(d.designer.image.url(:small))%></td>
+
+		<%end%>
+	</tr>
+	<tr>
+		<td><h3>products you have saved</h3></td>
+	</tr>
+	<tr>
+		<th></th>
+		<th>Product_name
+		</th>
+		<th>SKU
+		</th>
+		
+		<th>Sizes &nbsp&nbsp&nbsp&nbsp
+		</th>
+		<th>Quantity  &nbsp&nbsp&nbsp&nbsp
+		</th>
+		<th>Price
+		</th>
+	</tr>
+	<% @product.each do|p|%>
+	
+	<% @v=ProductSaved.where(:product_id=> p.product_id,:user_id=>current_user.id).map(&:size_id)%>
+		<tr>
+			
+<td rowspan='<%=@v.length%>'><%= link_to "delete" ,frontend_delete_path(:product_id=>p.product_id)%></td>
+
+      <td rowspan='<%=@v.length%>'><%= p.product.name %></td>
+      <td rowspan='<%=@v.length%>'><%= p.product.sku%></td>
+     
+ 
+
+
+ <% @productsaved.each do|p|%>
+
+		
+		<td  ><%=p.size.sizes%></td>
+		<td ><%= p.qty_selected%></td>
+		
+		<td ><%= (p.size.price)*(p.qty_selected)%></td>
+		<td ><%= link_to "delete" ,frontend_delete_path(:id=>p.id),:method=>"delete"%></td>
+		
+
+ 		
+ 		
+
+</tr>
+<%end%>
+ <%end%> 
+
+		
+ 
+		
+
+</table>

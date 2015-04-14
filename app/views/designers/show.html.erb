@@ -1,0 +1,26 @@
+<p>
+	<b>Name:</b>
+	<%=@designer.name%>
+</p>
+<p>
+	<b>Description:</b>
+	<%=@designer.description%>
+</p>
+<p>
+	<b>Image:</b>
+	<%=image_tag(@designer.image.url(:small))%>
+</p>
+<p>
+	<b>City:</b>
+	<%=@designer.city%>
+</p>
+<p>
+	<b>State:</b>
+	<%=@designer.state%>
+</p>
+<p>
+	<b>Country:</b>
+	<%=@designer.country%>
+</p>
+<%=link_to 'Edit',designers_edit_path(:edit_did=>@designer.id) %>
+<%=link_to 'Back' ,designers_path%>

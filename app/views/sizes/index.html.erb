@@ -1,0 +1,25 @@
+<h2> Product_Sizes Details </h2>
+<table>
+	<tr>
+		<th>Quantity   </th>
+		<th>Price    </th>
+		 <th>Sizes </th> 
+		<th>Product_id </th>
+		
+	</tr>
+	<% @sizes.each do |s| %>
+	<tr>
+		<td><%=s.quantity %></td>
+		<td><%=s.price  %></td>
+		<td><%=s.sizes%></td>
+		<td><%=s.product_id%></td>
+		
+		<td><%= link_to "Show",size_path(s.id)%></td>
+		<td><%= link_to "Edit" ,edit_size_path(s.id) %></td>
+		<td><%= link_to "Delete" ,size_path(s.id),:method=>"delete"%></td>
+	</tr>
+	<%end%>
+</table>
+<br>
+<%= link_to "New Sizes",new_size_path %>
+

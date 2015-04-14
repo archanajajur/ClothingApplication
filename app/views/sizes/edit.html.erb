@@ -1,0 +1,14 @@
+<h1>Edit Product_Sizes</h1>
+<%= form_for @size,url: "/sizes/#{@size.id}" do |f| %>
+	<div><%= f.label :Quantity %><br>
+		<%= f.text_field :quantity %></div>
+	<div><%= f.label :Price %><br>
+		<%=f.text_field :price %></div>
+	<div><%= f.label :Sizes %><br>
+		<%=f.select :sizes,options_for_select(["XL","L","M","S"],:selected=>"#{@size.sizes}") %></div> 
+		
+	<div><%= f.label :Product_id%><br />
+ 		<%=f.select :product_id, options_for_select(@product_ids,:selected=>"#{@size.product_id}")%></div>
+	<div><%= f.submit "Update" %></div>
+		
+	<%end%>

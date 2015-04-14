@@ -1,0 +1,118 @@
+<body>
+<div id="main">
+	<%= render :partial=>"layouts/header"%>
+
+	<!-- <div id ="side_bar">
+	<%#=render :partial=>"layouts/categories"%>
+
+	</div> -->
+
+	<div id="content">
+	
+		<div class="content_section">
+			<table>
+				<h3>Featured Categories</h3>
+				<tr><%@a.each do |u|%>
+					<td>
+						<%= link_to image_tag(u.image.url(:small)),  frontend_featured_subcate_path(u.id) %></td>
+				</td>
+				<%end%>
+				</tr>
+			</table>
+		</div>
+
+		<div class="content_section">
+			<table>
+				<h3>Featured Products</h3>
+				<tr><%@p.each do |u|%>
+					<td>
+						<%= link_to image_tag(u.image.url(:small)),  frontend_product_individual_path(:ipid=>u.id) %></td>
+				</td>
+				<%end%>
+				</tr>
+			</table>
+			
+		</div>
+
+		<div class="content_section">
+			<table>
+				<h3> Designer Details</h3>
+				<tr><%@desi.each do |u|%>
+					<td>
+						<%= link_to image_tag(u.image.url(:small)),  frontend_designer_individual_path(:idesid=>u.id) %></td>
+				
+				<%end%>
+				</tr>
+			</table>
+		</div>
+
+
+	</div>
+</div>
+
+<table >
+	
+	<% if !@designerliked.empty? %>
+	<tr>
+		<td><h3>Designers you have liked</h3></td>
+	</tr>
+	<br>
+	<br>
+	<tr>
+		<% @designerliked.each do |d|%>
+		<td><%= image_tag(d.designer.image.url(:small))%></td>
+
+		<%end%>
+	</tr>
+	<%else%>
+	<h2> No Designers liked</h2>
+	<%end%>
+	<% if !@product.empty? %>
+	<tr>
+		<td><h3>products you have saved</h3></td>
+	</tr>
+	<tr>
+		<th></th>
+		<th>Product_name
+		</th>
+		<th>SKU
+		</th>
+		
+		<th>Sizes &nbsp&nbsp&nbsp&nbsp
+		</th>
+		<th>Quantity  &nbsp&nbsp&nbsp&nbsp
+		</th>
+		<th>Price
+		</th>
+	</tr>
+	<% @product.each do|p|%>
+	
+	<% @v=ProductSaved.where(:product_id=> p.product_id,:user_id=>current_user.id).map(&:size_id)%>
+		<tr>
+			
+<td rowspan='<%=@v.length%>'><%= link_to "delete" ,frontend_delete_path(:product_id=>p.product_id)%></td>
+
+      <td rowspan='<%=@v.length%>'><%= p.product.name %></td>
+      <td rowspan='<%=@v.length%>'><%= p.product.sku%></td>
+     
+<% @productsaved.each do|p|%>
+
+		
+		<td  ><%=p.size.sizes%></td>
+		<td ><%= p.qty_selected%></td>
+		
+		<td ><%= (p.size.price)*(p.qty_selected)%></td>
+		<td ><%= link_to "delete" ,frontend_delete_path(:id=>p.id),:method=>"delete"%></td>
+</tr>
+<%end%>
+ <%end%> 
+ <%else%>
+ <h2>No Products Found</h2>
+ <%end%><br><br><br>
+
+</table>
+ <div id="aside">
+		<%=link_to "My Account",profile_path%>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		<%=link_to "Sign Out",destroy_user_session_path,:method => :delete%>
+	</div>
+</body>

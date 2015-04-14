@@ -1,0 +1,31 @@
+<h2> Designer Details </h2>
+<table>
+	<tr>
+		<th>Name   </th>
+		<th>Description     </th>
+		 <th>Image  </th> 
+		  
+		<th>City   </th>
+		<th>State  </th>
+		<th>Country</th>
+		
+	</tr>
+	<% @designers.each do |d| %>
+	<tr>
+		<td><%=d.name %></td>
+		<td><%=d.description  %></td>
+		<td><%=image_tag(d.image.url(:small))%></td>
+		
+		<td><%=d.city%></td>
+		<td><%=d.state%></td>
+		<td><%=d.country%></td>
+		<td><%= link_to "Show",designers_show_path(:show_did => d.id)%></td>
+		<td><%= link_to "Edit" ,designers_edit_path(:edit_did => d.id) %></td>
+		<td><%= link_to "Delete" ,designers_delete_path(:del_did => d.id)%></td>
+	</tr>
+	<%end%>
+</table>
+<br>
+<%= link_to "New Designer",designers_new_path %>
+
+

@@ -1,0 +1,31 @@
+<h2> Product Details </h2>
+<table>
+	<tr>
+		<th>   </th>
+		<th>Name   </th>
+		<th>Description </th>
+		<th>Image  </th> 
+		<th>SKU   </th>
+		<th>Designer_id </th>
+		<th>Price</th>
+		<th>Is_featured</th>
+		
+	</tr>
+	<% @products.each do |p| %>
+	<tr>
+		<td><%=p.id %></td>
+		<td><%=p.name %></td>
+		<td><%=p.description  %></td>
+		<td><%=image_tag(p.image.url(:small))%></td> 
+		<td><%=p.sku%></td>
+		<td><%=p.designer_id%></td>
+		<td><%=p.price%></td>
+		<td><%=p.is_featured%></td>
+		<td><%= link_to "Show", product_show_path(:show_pid => p.id) %></td>
+		<td><%= link_to "Edit" ,product_edit_path(:edit_pid => p.id)%></td>
+		<td><%= link_to "Delete" ,product_delete_path(:del_pid => p.id)%></td>
+	</tr>
+	<%end%>
+</table>
+<br>
+<%= link_to "New Product", product_new_path %>

@@ -1,0 +1,22 @@
+<h2> Categories Product Details </h2>
+<table>
+	<tr>
+		<th>Category_id   </th>
+		<th>Product_id </th>
+		
+	</tr>
+	<% @categoryproducts.each do |s| %>
+	<tr>
+		<td><%=s.category_id %></td>
+		
+		<td><%=s.product_id%></td>
+	
+		<td><%= link_to "Show", category_product_path(s.id)%></td>
+		<td><%= link_to "Edit" ,edit_category_product_path(s.id) %></td>
+		<td><%= link_to "Delete" ,category_product_path(s.id),:method=>"delete"%></td>
+	</tr>
+	<%end%>
+</table>
+<br>
+<%= link_to "New Sizes",new_category_product_path %>
+

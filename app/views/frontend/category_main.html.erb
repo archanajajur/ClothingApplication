@@ -1,0 +1,21 @@
+<%= render :partial=>"layouts/header"%>
+<h1>Featured Category</h1>
+
+<% @categ.each do|c|%>
+<%=link_to image_tag(c.image.url(:small)),frontend_featured_subcate_path(c.id) %>
+<%end%>
+
+
+<h1>Other Category</h1>
+
+<% @categ1.each do|c|%>
+<%=link_to image_tag(c.image.url(:small)),frontend_featured_subcate_path(c.id) %>
+
+<%end%><br><br><br>
+<div>
+<%= link_to "Back" ,frontend_home_path%>
+</div>
+<div id="aside">
+		<%=link_to "My Account",profile_path%>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		<%=link_to "Sign Out",destroy_user_session_path,:method => :delete%>
+	</div>

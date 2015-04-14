@@ -1,0 +1,15 @@
+
+<h1>Product Saved</h1>
+<table><% @prod_saved.each do |p|%>
+	<tr><td>
+		<%=image_tag(p.product.image.url(:small))%> 
+		</td>
+	</tr><%end%>
+	</table>
+<h1>Designer Liked</h1>
+<table><%@designer_like.each do |d|%>
+	<tr><td>
+		<%=image_tag(d.designer.image.url(:small))%> 
+		</td>
+	</tr><%end%>
+	</table>

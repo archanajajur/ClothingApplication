@@ -1,0 +1,19 @@
+<h1>Editing Products</h1>
+
+<%= form_for(@product,url: product_update_path(:update_pid=>"#{@product.id}"), html: { method: :put }) do |f| %>
+	<div><%= f.label :Name%><br />
+  		<%= f.text_field :name%></div>
+	<div><%= f.label :Description%><br />
+  		<%= f.text_area :description%></div>
+	<div><%= f.label :Image %><br>
+		<%=f.file_field :image %></div> 
+	<div><%= f.label :Is_featured%><br />
+  	<%= f.check_box :is_featured%></div>
+<div><%#= f.label :Designer_id%><br />
+ 	<%#=f.select :designer_id, options_for_select(@designer_ids)%></div>
+ <div><%= f.label :Price%><br />
+  	<%= f.text_field :price%></div>
+	<div><%= f.submit "Update"  %></div>
+  	<% end %>
+<%=link_to 'Show',product_show_path(:show_pid=>@product.id)%>
+<%=link_to 'Back',product_index_path%>

@@ -1,0 +1,13 @@
+
+
+<%= form_for(:user,url: update_account_path(:id => "#{@user.id}"), html: { method: :post }) do |f| %>
+<div><%= f.label :Name%><br />
+  <%= f.text_field :name,:value => "#{@user.name}"%></div>
+
+  <!--<div><%#= f.label :email %><br />
+  <%#= f.email_field :email %></div>-->
+
+  <div><%= f.submit "Update" %></div>
+<% end %>
+
+<%=link_to "Back",main_view_path%>

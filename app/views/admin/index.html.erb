@@ -1,0 +1,30 @@
+<table>
+<tr>
+	<td>
+		<%=link_to "Category Management",categories_path%>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+	</td>
+	<td>
+		<%=link_to "Product Management",product_index_path%>
+
+	</td>
+</tr>
+<tr>
+	<td>
+		<%=link_to " Designer Management",designers_path%>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+	</td>
+	<td>
+		<%=link_to " User Management",admin_users_path%>
+
+	</td>
+</tr>
+ <tr>
+	<td>
+		<%=link_to " Selected Management",admin_select_manag_path%>
+
+	</td>
+</tr> 
+</table>
+<div id="sign_out"><%=link_to "sign_out",destroy_user_session_path,:method => :delete%>
+	</div>

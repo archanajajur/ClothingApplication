@@ -1,0 +1,16 @@
+<h1>Editing Category</h1>
+<%= form_for(@c1,url: categories_update_path(:id=>"#{@c1.id}"), html: { method: :put }) do |f| %>
+
+<div><%= f.label :Name%><br />
+  	<%= f.text_field :name%></div>
+<div><%= f.label :Description%><br />
+  	<%= f.text_area :description%></div>
+ <div><%= f.label :is_featured%><br />
+  	<%= f.check_box :is_featured%></div>
+  	
+ <div><%= f.label :Image%><br />
+  	<%= f.file_field :image%></div>
+ <div><%= f.submit "Update"  %></div>
+  	<% end %>
+<%=link_to 'Show',categories_show_path(:category_id=>@c1.id)%>
+<%=link_to 'Back',categories_path%>

@@ -1,0 +1,49 @@
+<body>
+	<div id="main">
+<%= render :partial=>"layouts/header"%>
+		<div id ="side_bar">
+		<%=render :partial=>"layouts/categories"%>
+	</div>
+	<div id="content">
+<h1> Individual Category details</h1>
+<table>
+
+<tr>
+	<td>Name:</td>
+	<td><%= @ind.name %></td>
+</tr>
+<tr>
+	<td>Description:</td>
+	<td><%= @ind.description %></td>
+</tr>
+<tr>
+	<td>Image:</td>
+	<td><%=image_tag(@ind.image.url(:small))%></td>
+</tr>
+<tr><td><h1>Featured products<h1><td></tr>
+	<tr>
+<% @products.each do |p| %>
+
+<% if p.is_featured==true %>
+ <td><%= link_to image_tag(p.image.url(:small)), frontend_product_individual_path(:ipid=>p.id) %></td>
+    <% end %>
+ <%end%>                                 
+  </tr>
+<tr><td><h1>Other products<h1><td></tr>
+ <tr>
+
+<% @products.each do |p| %>
+<% if p.is_featured==false %>
+ <td><%= link_to image_tag(p.image.url(:small)), frontend_product_individual_path(:ipid=>p.id) %></td>
+    <% end %>
+ <% end %>                               
+  </tr>
+</table>
+</div>
+</div>
+<%= link_to "Back" ,frontend_home_path%>
+<div id="aside">
+		<%=link_to "My Account",profile_path%>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		<%=link_to "Sign Out",destroy_user_session_path,:method => :delete%>
+	</div>
+</body>

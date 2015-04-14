@@ -1,0 +1,11 @@
+
+<p>
+	<b>Category_id:</b>
+	<%=@categoryproduct.category_id%>
+</p>
+<p>
+	<b>Product_id:</b>
+	<%=@categoryproduct.product_id%>
+</p>
+<%=link_to 'Edit',edit_category_product_path(@categoryproduct) %>
+<%=link_to 'Back' ,category_products_path%>

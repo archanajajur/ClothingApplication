@@ -1,0 +1,63 @@
+<body>
+	<div id="main">
+		<div id ="side_bar">
+	<%=render :partial=>"layouts/designer"%>
+
+	</div>
+
+	<div id="content">
+<% if @ckeck_user_liked.nil?%>
+<%=link_to "Like" ,frontend_designer_liked_path(@designer.id)%>
+<%end%>
+<h1> Individual Designer details</h1>
+<table>
+
+<tr>
+	<td>Name:</td>
+	<td><%= @designer.name %></td>
+</tr>
+<tr>
+	<td>Description:</td>
+	<td><%= @designer.description %></td>
+</tr>
+<tr>
+	<td>Image:</td>
+	<td><%=image_tag(@designer.image.url(:small))%></td>
+</tr>
+<tr>
+	<td>City:</td>
+	<td><%= @designer.city %></td>
+</tr>
+<tr>
+	<td>State:</td>
+	<td><%= @designer.state %></td>
+</tr>
+<tr>
+	<td>Country:</td>
+	<td><%= @designer.country %></td>
+</tr>
+<tr><td><h1>Featured Products</h1></td></tr>
+	<tr>
+<% @products.each do |c| %>
+
+ <td><%= link_to image_tag(c.image.url(:small)), frontend_product_individual_path(:ipid=>c.id) %></td>
+    
+   <% end %>                                
+  </tr>
+  <tr><td><h1>Other Products</h1></td></tr>
+	<tr>
+<% @products1.each do |c| %>
+
+ <td><%= link_to image_tag(c.image.url(:small)), frontend_product_individual_path(:ipid=>c.id) %></td>
+    
+   <% end %>                                
+  </tr>
+
+
+</table>
+</div>
+</div>
+</body>
+
+
+

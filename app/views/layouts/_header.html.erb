@@ -1,0 +1,13 @@
+ <div id="header">
+		<ul>
+<li><%= link_to "Home" ,frontend_home_path%></li>
+<li><%= link_to "Categories" ,frontend_category_main_path%></li>
+<li><%= link_to "Products",frontend_product_main_path%></li>
+<li><%= link_to "Designers" ,frontend_designer_main_path%></li>
+<% if !user_signed_in? %>
+<li><%= link_to "Login" ,new_user_session_path%></li>
+<li><%= link_to "Sign_up" ,new_user_registration_path%></li>
+<% end %>
+</ul>
+
+	</div>

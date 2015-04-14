@@ -1,0 +1,10 @@
+<h1> Edit Category Product</h1>
+<%= form_for @categoryproduct,:url=>{:controller=>"category_products",:action=>"update"}  do |f| %>
+
+	<div><%= f.label :Category_id %><br>
+		<%=f.select :category_id,options_for_select(@category_ids,:selected=>"#{@categoryproduct.category_id}") %></div> 
+	<div><%= f.label :Product_id%><br />
+ 		<%=f.select :product_id,options_for_select(@product_ids,:selected=>"#{@categoryproduct.product_id}")%></div>
+	<div><%= f.submit "Update" %></div>
+		
+	<%end%>
